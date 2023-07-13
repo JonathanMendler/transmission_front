@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { GamesIndex } from "./GamesIndex";
 import { GamesShow } from "./GamesShow";
 import { GamesNew } from "./GamesNew";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -37,6 +40,11 @@ export function Content() {
     setCurrentGame(game);
   };
 
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsGamesShowVisible(false);
+  };
+
   const handleCreateGame = (params, successCallBack) => {
     console.log("handleCreateGame", params);
     axios.post("http://localhost:3000/games.json", params).then((response) => {
@@ -62,16 +70,14 @@ export function Content() {
     });
   };
 
-  const handleClose = () => {
-    console.log("handleClose");
-    setIsGamesShowVisible(false);
-  };
-
   useEffect(handleIndexGames, []);
 
   return (
     <div>
       {/* <UsersIndex users={users} /> */}
+      <Signup />
+      <Login />
+      <LogoutLink />
       <GamesNew onCreateGame={handleCreateGame} />
       <GamesIndex games={games} onShowGame={handleShowGame} />
       <Modal show={isGamesShowVisible} onClose={handleClose}>

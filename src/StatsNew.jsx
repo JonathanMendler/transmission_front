@@ -7,11 +7,8 @@ export function StatsNew(props) {
 
   return (
     <div>
-      <h1>New Review</h1>
+      <h3>Share your experience?</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input name="name" type="text" />
-        </div>
         <div>
           Review: <input name="review" type="text" />
         </div>

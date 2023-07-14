@@ -14,25 +14,6 @@ export function StatsShow(props) {
       <p>Average Viewer Count: {props.stat.avg_viewers}</p>
       <p>Hours Streamed: {props.stat.time_streamed}</p>
       <p>Followers Gained: {props.stat.followers_gained}</p>
-
-      <form onSubmit={handleSubmit}>
-        {/* <div>
-          Name: <input defaultValue={props.user.name} name="name" type="text" />
-        </div> */}
-        <div>
-          Review: <input defaultValue={props.stat.review} name="review" type="text" />
-        </div>
-        <div>
-          Average Viewer Count: <input defaultValue={props.stat.avg_viewers} name="avg_viewers" type="text" />
-        </div>
-        <div>
-          Hours Streamed: <input defaultValue={props.stat.time_streamed} name="time_streamed" type="text" />
-        </div>
-        <div>
-          Followers Gained: <input defaultValue={props.stat.followers_gained} name="followers_gained" type="text" />
-        </div>
-        <button type="submit">Update Review</button>
-      </form>
     </div>
   );
 }

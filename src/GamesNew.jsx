@@ -21,7 +21,9 @@ export function GamesNew(props) {
         <div>
           Image Url: <input name="image_url" type="text" />
         </div>
-        <button type="submit">Create Game</button>
+        <button className="btn btn-primary btn-sm" type="submit">
+          Create Game
+        </button>
       </form>
     </div>
   );

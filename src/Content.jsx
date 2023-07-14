@@ -75,7 +75,8 @@ export function Content() {
   const handleCreateStat = (params, successCallBack) => {
     console.log("handleCreateStat", params);
     axios.post("http://localhost:3000/stats.json", params).then((response) => {
-      setStats([...stats, response.data]);
+      const newStat = response.data;
+      setStats([...stats, newStat]);
       successCallBack();
     });
   };
@@ -104,9 +105,10 @@ export function Content() {
   };
 
   useEffect(handleIndexGames, []);
+  useEffect(handleIndexStats, []);
 
   return (
-    <div>
+    <div className="container">
       <Signup />
       <Login />
       <LogoutLink />
@@ -116,7 +118,7 @@ export function Content() {
         <GamesShow game={currentGame} onUpdateGame={handleUpdateGame} />
         <StatsNew onCreateStat={handleCreateStat} />
         <StatsIndex stats={stats} onShowStat={handleShowStat} />
-        <StatsShow stat={currentStat} onUpdateStat={handleUpdateStat} />
+        {/* <StatsShow stat={currentStat} onUpdateStat={handleUpdateStat} /> */}
       </Modal>
     </div>
   );

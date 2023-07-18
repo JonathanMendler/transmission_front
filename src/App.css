@@ -37,7 +37,12 @@
   padding: 2em;
 }
 
+card-img-top {
+  background-size: cover;
+}
+
 .read-the-docs {
   color: #888;
 }
+
 

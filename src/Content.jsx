@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 // import { UsersIndex } from "./UsersIndex";
 import { GamesIndex } from "./GamesIndex";
 import { GamesShow } from "./GamesShow";
@@ -7,9 +7,6 @@ import { GamesNew } from "./GamesNew";
 import { StatsIndex } from "./StatsIndex";
 import { StatsShow } from "./StatsShow";
 import { StatsNew } from "./StatsNew";
-import { Signup } from "./Signup";
-import { Login } from "./Login";
-import { LogoutLink } from "./LogoutLink";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -37,13 +34,14 @@ export function Content() {
   const handleClose = () => {
     console.log("handleClose");
     setIsGamesShowVisible(false);
+    setIsStatsShowVisible(false);
   };
 
-  const handleCreateGame = (params, successCallBack) => {
+  const handleCreateGame = (params, successCallback) => {
     console.log("handleCreateGame", params);
     axios.post("http://localhost:3000/games.json", params).then((response) => {
       setGames([...games, response.data]);
-      successCallBack();
+      successCallback();
     });
   };
 
@@ -72,19 +70,31 @@ export function Content() {
     });
   };
 
-  const handleCreateStat = (params, successCallBack) => {
+  const handleCreateStat = (params, successCallback) => {
     console.log("handleCreateStat", params);
     axios.post("http://localhost:3000/stats.json", params).then((response) => {
-      const newStat = response.data;
-      setStats([...stats, newStat]);
-      successCallBack();
+      // const newStat = response.data;
+      setStats([...stats, response.data]);
+      // line 76 had newStat instead of response.data
+      successCallback();
     });
   };
 
   const handleShowStat = (stat) => {
     console.log("handleShowStat", stat);
-    setIsStatsShowVisible(true);
-    setCurrentStat(stat);
+    axios.get(`http://localhost:3000/stats/${game.id}.json`, params).then((response) => {
+      setStats(
+        stats.map((stat) => {
+          if (game.id === currentGame) {
+            return response.data;
+          } else {
+            return stat;
+          }
+        })
+      );
+      setIsStatsShowVisible(true);
+      setCurrentStat(stat);
+    });
   };
 
   const handleUpdateStat = (id, params, successCallback) => {
@@ -104,21 +114,37 @@ export function Content() {
     });
   };
 
+  const handleDestroyStat = (stat) => {
+    console.log("handleDestroyStat", stat);
+    axios.delete(`http://localhost:3000/stats/${stat.id}.json`).then((response) => {
+      setStats(stats.filter((s) => s.id !== stat.id));
+      handleClose();
+    });
+  };
+
   useEffect(handleIndexGames, []);
   useEffect(handleIndexStats, []);
 
   return (
     <div className="container">
-      <Signup />
-      <Login />
-      <LogoutLink />
-      <GamesNew onCreateGame={handleCreateGame} />
+      <br></br>
+      <h1>
+        <center>Stream-A-Go</center>
+      </h1>
+      <h2>
+        <center>Find the game to fit your vibe</center>
+      </h2>
+      <br></br>
+      <br></br>
       <GamesIndex games={games} onShowGame={handleShowGame} />
+      <GamesNew onCreateGame={handleCreateGame} />
       <Modal show={isGamesShowVisible} onClose={handleClose}>
-        <GamesShow game={currentGame} onUpdateGame={handleUpdateGame} />
-        <StatsNew onCreateStat={handleCreateStat} />
-        <StatsIndex stats={stats} onShowStat={handleShowStat} />
-        {/* <StatsShow stat={currentStat} onUpdateStat={handleUpdateStat} /> */}
+        <GamesShow game={currentGame} stat={currentStat} onUpdateGame={handleUpdateGame} />
+        <br></br>
+        <StatsNew onCreateStat={handleCreateStat} game={currentGame} />
+        <br></br>
+        <StatsIndex game={currentGame} />
+        <StatsShow stat={currentStat} onUpdateStat={handleUpdateStat} onDestroyStat={handleDestroyStat} />
       </Modal>
     </div>
   );

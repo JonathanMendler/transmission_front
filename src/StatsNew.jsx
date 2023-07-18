@@ -2,6 +2,7 @@ export function StatsNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
+    params.append("game_id", props.game.id);
     props.onCreateStat(params, () => event.target.reset());
   };
 
@@ -21,6 +22,9 @@ export function StatsNew(props) {
         <div>
           Followers Gained: <input name="followers_gained" type="text" />
         </div>
+        {/* <button className="btn btn-primary btn-sm" type="submit">
+          Create Review
+        </button> */}
         <button type="submit">Create Review</button>
       </form>
     </div>

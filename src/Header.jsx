@@ -7,6 +7,7 @@ import { useState } from "react";
 export function Header() {
   const [isSignupVisible, setIsSignupVisible] = useState(false);
   const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [setIsLogoutVisible] = useState(false);
 
   const handleSignupShow = () => {
     setIsSignupVisible(true);
@@ -22,6 +23,10 @@ export function Header() {
 
   const handleLoginHide = () => {
     setIsLoginVisible(false);
+  };
+
+  const handleLogoutShow = () => {
+    setIsLogoutVisible(true);
   };
 
   return (
@@ -60,34 +65,6 @@ export function Header() {
                   Login
                 </a>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Goodies
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>
@@ -97,6 +74,7 @@ export function Header() {
         <Modal show={isLoginVisible} onClose={handleLoginHide}>
           <Login />
         </Modal>
+        <LogoutLink />
       </nav>
     </header>
   );

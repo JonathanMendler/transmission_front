@@ -5,7 +5,7 @@ export function StatsIndex(props) {
       {props.game?.stats.map((stat) => (
         <div key={stat.id}>
           {/* <h3>{user.name}</h3> */}
-          <h3>Review: {stat.review}</h3>
+          <h4>Review: {stat.review}</h4>
           <p>Average Viewers: {stat.avg_viewers}</p>
           <p>Hours Streamed: {stat.time_streamed}</p>
           <p>Followers Gained: {stat.followers_gained}</p>

@@ -128,10 +128,10 @@ export function Content() {
   return (
     <div className="container">
       <br></br>
-      <h1>
+      <h1 id="title">
         <center>Stream-A-Go</center>
       </h1>
-      <h2>
+      <h2 id="subtitle">
         <center>Find the game to fit your vibe</center>
       </h2>
       <br></br>

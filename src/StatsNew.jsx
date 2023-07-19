@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export function StatsNew(props) {
+  const [review, setReview] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
@@ -11,8 +15,18 @@ export function StatsNew(props) {
       <h3>Share your experience?</h3>
       <form onSubmit={handleSubmit}>
         <div>
-          Review: <input name="review" type="text" />
+          Review:{" "}
+          <textarea
+            rows="4"
+            cols="50"
+            name="review"
+            type="text"
+            maxLength="500"
+            value={review}
+            onChange={(event) => setReview(event.target.value)}
+          />
         </div>
+        <small>{500 - review.length} characters remaining</small>
         <div>
           Average Viewer Count: <input name="avg_viewers" type="text" />
         </div>

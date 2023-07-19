@@ -29,12 +29,6 @@ export function StatsShow(props) {
       </form>
       <br></br>
       <button onClick={handleClick}>Destroy Review</button>
-      {/* <h1>Reviews</h1>
-      Addinging lines 5 & 6 from StatsIndex
-      <p>Review: {props.stat.review}</p>
-      <p>Average Viewers: {props.stat.avg_viewers}</p>
-      <p>Hours Streamed: {props.stat.time_streamed}</p>
-      <p>Followers Gained: {props.stat.followers_gained}</p> */}
     </div>
   );
 }

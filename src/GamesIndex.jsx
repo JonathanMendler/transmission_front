@@ -3,6 +3,7 @@ export function GamesIndex(props) {
   return (
     <div id="games-index">
       <h1>All Games</h1>
+      <br></br>
       {/* {props.games.map((game) => (
         <div key={game.id}>
           <h2>{game.name}</h2>

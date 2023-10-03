@@ -38,6 +38,10 @@ header {
   font-family: 'VT323', monospace;
 }
 
+#about {
+  font-family: 'VT323', monospace;
+}
+
 .modal-main {
   background-color: rgb(40, 42, 44);
 }

@@ -134,6 +134,14 @@ export function Content() {
       <h2 id="subtitle">
         <center>Find the game to fit your vibe</center>
       </h2>
+      <h3 id="about">
+        <br></br>
+        <br></br>
+        <center>
+          Finding a reliable game to stream can be difficult. Stream-A-Go offers you a look into how a game may perform
+          for you & your community based on reviews from others that have already streamed it.
+        </center>
+      </h3>
       <br></br>
       <br></br>
       <GamesIndex games={games} onShowGame={handleShowGame} />

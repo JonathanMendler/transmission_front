@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Special+Elite&display=swap');
+/* ^^Google Font imports */
 
 html {
   scroll-behavior: smooth ;
@@ -7,6 +9,8 @@ html {
 #stream-a-go {
   font-family: 'VT323', monospace;
 }
+/* ^^ App Header title */
+
 header {
   background-color: black;
 }
@@ -16,7 +20,6 @@ header {
   font-weight: bold;
   color: whitesmoke;
   background-image: url("https://www.mortenslessons.com/wp-content/uploads/2014/08/black-brick-textureblack-brick-wall-seamless-background-texture-background-or-jfzjdj91.jpg");
-  /* <a href="https://www.freepik.com/free-vector/white-rhombus-background_955532.htm#query=white%20seamless%20background&position=9&from_view=keyword&track=ais">Image by eightonesix</a> on Freepik */
 }
 
 /* #games-index img {
@@ -32,15 +35,19 @@ header {
 
 #title{
   font-family: 'VT323', monospace;
+  font-size: 64px;
 }
 
 #subtitle {
-  font-family: 'VT323', monospace;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Special Elite', cursive;
 }
 
 #about {
-  font-family: 'VT323', monospace;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Special Elite', cursive;
 }
+/* ^^Lines 36-49 Welcome Info */
 
 .modal-main {
   background-color: rgb(40, 42, 44);
